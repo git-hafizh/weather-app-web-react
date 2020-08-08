@@ -1,0 +1,68 @@
+@mixin btnProperty {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: transparent;
+  outline: none;
+  background: transparent;
+}
+
+form {
+  background: transparent;
+
+  .row{
+    background: transparent;
+  }
+
+  span {
+    background: transparent;
+
+    svg {
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+
+  input.form-control {
+    float: right;
+    width: 80%;
+    border: none;
+    outline: none;
+  }
+
+  input.form-control:focus {
+    -webkit-box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
+    -moz-box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
+    box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
+  }
+
+  button.btn-secondary {
+    border: 0;
+    background: none;
+    outline: none;
+    background-color: none;
+
+    svg {
+      background: transparent;
+      stroke: #212529;
+      cursor: pointer;
+    }
+  }
+
+  button.btn-secondary:hover{
+    @include btnProperty;
+  }
+
+  button.btn-secondary:visited{
+    @include btnProperty;
+  }
+
+  button.btn-secondary.focus, button.btn-secondary:focus{
+    @include btnProperty;
+  }
+
+  button.btn-secondary:not(:disabled):not(.disabled):active{
+    @include btnProperty;
+  }
+  
+}
+
