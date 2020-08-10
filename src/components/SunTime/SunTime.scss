@@ -1,0 +1,51 @@
+@mixin circle {
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 15px;
+  border-radius: 50%;
+  background: rgb(255, 222, 74);
+  background: radial-gradient(
+    circle,
+    rgba(255, 222, 74, 1) 0%,
+    rgba(255, 199, 96, 1) 55%,
+    rgba(255, 156, 6, 1) 90%
+  );
+}
+
+@mixin svgProperty {
+  font-size: 16px;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  top: 25%;
+  background-color: transparent;
+  background: transparent;
+  position: relative;
+}
+
+.square {
+  background: none;
+  margin: 10px 0;
+  
+  .row {
+    margin: 10px 0;
+  
+    div.circle1 {
+      @include circle;
+  
+      svg {
+        @include svgProperty;
+      }
+    }
+  
+    div.circle2 {
+      @include circle;
+  
+      svg {
+        @include svgProperty;
+      }
+    }
+  }
+}
+

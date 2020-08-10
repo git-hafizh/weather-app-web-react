@@ -1,152 +1,184 @@
+div.main{
+  margin-top: 25px;
+}
+
 .container {
-  margin: 36px;
-}
+  margin: 0;
 
-.vert-1 {
-  background-color: white;
-  border-radius: 20px 0px 0px 20px;
+  .row {
+    margin: 0;
 
-  .card.weather-search {
-    background: transparent;
-    margin-bottom: 1rem;
+    .vert-1 {
+      background-color: white;
+      border-radius: 20px 0px 0px 20px;
 
-    .input-search {
-      background: transparent;
-
-      span {
+      .card.weather-search {
         background: transparent;
+        margin-bottom: 1rem;
 
-        svg {
+        .input-search {
           background: transparent;
-          cursor: pointer;
-        }
-      }
 
-      input.form-control {
-        float: right;
-        width: 80%;
-        border: none;
-        outline: none;
-      }
+          span {
+            background: transparent;
 
-      input.form-control:focus {
-        -webkit-box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
-        -moz-box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
-        box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
-      }
-    }
-  }
-
-  .card {
-    font-size: 16px;
-    border: none;
-    margin: 2rem;
-
-    p{
-      background-color: none;
-    }
-
-    span.cityName {
-      font-size: 26px;
-      margin: -0.5rem 0 1rem 0;
-      font-weight: 600;
-    }
-
-    span.typeWeather{
-      margin-top: 1rem;
-    }
-
-    span {
-      text-align: center;
-      background: none;
-
-      img {
-        width: 80%;
-        background: none;
-
-        .slideInUp {
-          overflow-y: hidden;
-          max-height: 500px; /* approximate max height */
-
-          transition-property: all;
-          transition-duration: 0.5s;
-          transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-        }
-      }
-    }
-
-    .weather-temp {
-      font-size: 3.5rem;
-      background: none;
-
-      span {
-        font-size: 2rem;
-        vertical-align: text-top;
-      }
-    }
-
-    .weather-date {
-      margin-top: -30px;
-      background: none;
-    }
-  }
-}
-
-.vert-2 {
-  background-color: #f6f6f8;
-  border-radius: 0px 20px 20px 0px;
-
-  .card.up {
-    margin: 1rem 0;
-    width: 100px;
-    text-align: center;
-    background-color: transparent;
-    border: none;
-
-    .card-body {
-      font-size: 16px;
-      padding: 0.5rem;
-      border-radius: 20px;
-
-      .weather-icon {
-        font-size: 28px;
-      }
-    }
-  }
-
-  .card.down {
-    background: transparent;
-    border: none;
-
-    .header-title {
-      background-color: transparent;
-      font-size: 18px;
-      font-weight: 600;
-      border: none;
-    }
-
-    .row {
-      background: transparent;
-
-      .col-md-4 {
-        background: transparent;
-
-        .card {
-          margin: 10px 0;
-          border: none;
-          border-radius: 20px;
-          padding: 1rem;
-
-          span.title {
-            background: none;
-            color: #aeaeae;
+            svg {
+              background: transparent;
+              cursor: pointer;
+            }
           }
 
-          span.number {
+          input.form-control {
+            float: right;
+            width: 80%;
+            border: none;
+            outline: none;
+          }
+
+          input.form-control:focus {
+            -webkit-box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
+            -moz-box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
+            box-shadow: 3px 0px 0px 0px rgba(255, 193, 23, 1);
+          }
+        }
+      }
+
+      .card {
+        font-size: 16px;
+        border: none;
+        margin: 2rem;
+
+        p {
+          background-color: none;
+        }
+
+        span.cityName {
+          font-size: 26px;
+          margin: -0.5rem 0 1rem 0;
+          font-weight: 600;
+        }
+
+        span.typeWeather {
+          margin-top: 1rem;
+          cursor: pointer;
+        }
+
+        span.typeWeather:hover {
+          border-left: 2px solid #1c6ea4;
+          border-right: 2px solid #1c6ea4;
+        }
+
+        span {
+          text-align: center;
+          background: none;
+
+          img {
+            width: 80%;
             background: none;
-            font-size: 48px;
-            font-weight: 600;
-            text-align: center;
+
+            .slideInUp {
+              overflow-y: hidden;
+              max-height: 500px; /* approximate max height */
+
+              transition-property: all;
+              transition-duration: 0.5s;
+              transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+            }
+          }
+        }
+
+        .weather-temp {
+          font-size: 3.5rem;
+          background: none;
+
+          span {
+            font-size: 2rem;
+            vertical-align: text-top;
+          }
+        }
+
+        .weather-date {
+          margin-top: -30px;
+          background: none;
+        }
+      }
+    }
+
+    .vert-2 {
+      background-color: #f6f6f8;
+      border-radius: 0px 20px 20px 0px;
+
+      .wrap {
+        background-color: transparent;
+        padding: 1rem;
+      }
+
+      .card.top {
+        width: 100px;
+        margin: 10px;
+        text-align: center;
+        background-color: transparent;
+        border: none;
+
+        .card-body {
+          font-size: 16px;
+          padding: 0.5rem;
+          border-radius: 20px;
+          background: white;
+
+          span.weather-icon {
+            background: transparent;
+            font-size: 28px;
+
+            svg {
+              background-color: transparent;
+              background: transparent;
+            }
+          }
+
+          span.temp-degree {
+            background: transparent;
+          }
+        }
+      }
+
+      .card.bottom {
+        background: transparent;
+        border: none;
+
+        .header-title {
+          background-color: transparent;
+          font-size: 18px;
+          font-weight: 600;
+          border: none;
+        }
+
+        .row {
+          background: transparent;
+
+          .col-md-4 {
+            background: transparent;
+
+            .card {
+              margin: 10px 0;
+              border: none;
+              border-radius: 20px;
+              padding: 1rem;
+              width: 230px;
+              height: 175px;
+
+              span.title {
+                background: none;
+                color: #aeaeae;
+              }
+
+              span.number {
+                background: none;
+                font-size: 48px;
+                font-weight: 600;
+                text-align: left;
+              }
+            }
           }
         }
       }
