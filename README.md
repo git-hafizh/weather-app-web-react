@@ -1,4 +1,4 @@
-[Live Demo](https://git-hafizh.github.io/weather-app-web-react/)
+**[Live Demo](https://git-hafizh.github.io/weather-app-web-react/)**
 
 ### `Weather App Web`
 
