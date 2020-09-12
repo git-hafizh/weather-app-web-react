@@ -11,6 +11,7 @@ form {
 
   .row{
     background: transparent;
+    margin-bottom: 1rem;
   }
 
   span {
@@ -24,9 +25,11 @@ form {
 
   input.form-control {
     float: right;
-    width: 80%;
+    width: 85%;
     border: none;
     outline: none;
+    position: absolute;
+    margin-left: 2.5rem;
   }
 
   input.form-control:focus {
@@ -40,6 +43,8 @@ form {
     background: none;
     outline: none;
     background-color: none;
+    position: absolute;
+    z-index: 1;
 
     svg {
       background: transparent;

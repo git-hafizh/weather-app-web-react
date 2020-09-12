@@ -4,7 +4,7 @@ import "./Humidity.scss";
 
 const Humidity = (props) => {
   return (
-    <Card>
+    <Card id="humidity">
       <span className="title">Humidity</span>
       <br />
       <div className="wrapHumidity">

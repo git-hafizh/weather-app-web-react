@@ -54,7 +54,7 @@ div.main{
 
         span.cityName {
           font-size: 26px;
-          margin: -0.5rem 0 1rem 0;
+          margin: 1.5rem 0 1rem 0;
           font-weight: 600;
         }
 
@@ -111,33 +111,14 @@ div.main{
       .wrap {
         background-color: transparent;
         padding: 1rem;
-      }
 
-      .card.top {
-        width: 100px;
-        margin: 10px;
-        text-align: center;
-        background-color: transparent;
-        border: none;
+        .mapForecast{
+          background-color: transparent;
 
-        .card-body {
-          font-size: 16px;
-          padding: 0.5rem;
-          border-radius: 20px;
-          background: white;
-
-          span.weather-icon {
+          img{
             background: transparent;
-            font-size: 28px;
-
-            svg {
-              background-color: transparent;
-              background: transparent;
-            }
-          }
-
-          span.temp-degree {
-            background: transparent;
+            width: 60%;
+            padding: 0.5rem;
           }
         }
       }

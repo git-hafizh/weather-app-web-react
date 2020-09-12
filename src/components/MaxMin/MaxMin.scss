@@ -1,0 +1,59 @@
+@mixin circle {
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 15px;
+  border-radius: 50%;
+}
+
+@mixin svgProperty {
+  font-size: 16px;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  top: 25%;
+  background-color: transparent;
+  background: transparent;
+  position: relative;
+}
+
+.squareTemp {
+  background: none;
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  .row {
+    margin: 10px 0;
+
+    div.circleRed {
+      @include circle;
+      background: rgb(249, 154, 154);
+      background: radial-gradient(
+        circle,
+        rgba(249, 154, 154, 1) 0%,
+        rgba(255, 107, 107, 1) 65%,
+        rgba(238, 82, 83, 1) 100%
+      );
+
+      svg {
+        @include svgProperty;
+      }
+    }
+
+    div.circleBlue {
+      @include circle;
+      background: rgb(144, 227, 245);
+      background: radial-gradient(
+        circle,
+        rgba(144, 227, 245, 1) 0%,
+        rgba(72, 219, 251, 1) 65%,
+        rgba(10, 189, 227, 1) 100%
+      );
+
+      svg {
+        @include svgProperty;
+      }
+    }
+  }
+}

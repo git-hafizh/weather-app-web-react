@@ -1,14 +1,17 @@
-div.wrapHumidity{
-    margin: 0;
-    padding: 0;
-    background: none;
-    
-    span.percentage{
-        vertical-align: top;
+.card#humidity{
+
+    div.wrapHumidity{
+        margin: 0;
+        padding: 0;
         background: none;
-        font-size: 1.2rem;
-        position: relative;
-        top: 15%;
-        font-weight: 600;
+        
+        span.percentage{
+            vertical-align: top;
+            background: none;
+            font-size: 1.2rem;
+            position: relative;
+            top: 15%;
+            font-weight: 600;
+        }
     }
 }

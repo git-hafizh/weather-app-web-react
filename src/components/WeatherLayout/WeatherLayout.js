@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Card, CardBody } from "reactstrap";
+import { Container, Row, Col, Card } from "reactstrap";
 import "./WeatherLayout.scss";
-import { WiDayCloudy } from "react-icons/wi";
 import axios from "axios";
 import SearchCity from "../SearchCity/SearchCity";
 import moment from "moment";
@@ -10,6 +9,8 @@ import SunTime from "../SunTime/SunTime";
 import Humidity from "../Humidity/Humidity";
 import Visibility from "../Visibilty/Visibility";
 import AirPressure from "../AirPressure/AirPressure";
+import WeatherForecast from "../WeatherForecast/WeatherForecast";
+import MaxMin from "../MaxMin/MaxMin";
 
 class WeatherLayout extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class WeatherLayout extends React.Component {
       theIcon: "",
       Datas: [],
       Datas2: [],
+      Datas3: []
     };
   }
 
@@ -64,6 +66,9 @@ class WeatherLayout extends React.Component {
       //Data 2
       const _Datas2 = result.data;
 
+      //Data 3
+      const _Datas3 = result.data.consolidated_weather;
+
       //formatting date
       const the_DateMoment = moment(the_Date).format("LLLL");
       const the_DateSlice = the_DateMoment.split(" ");
@@ -81,12 +86,13 @@ class WeatherLayout extends React.Component {
         maxTemp: max_Temp.toString().slice(0, 4),
         theTemp: the_Temp.toString().slice(0, 4),
         windSpeed: wind_Speed.toString().slice(0, 4),
-        visibility : parseInt(the_Visibility),
+        visibility: parseInt(the_Visibility),
         air_pressure: parseFloat(the_AirPressure),
         theIcon: the_Icon,
         theDate: _dateSliced,
         Datas: _Datas,
         Datas2: _Datas2,
+        Datas3: _Datas3
       });
     });
   };
@@ -102,11 +108,31 @@ class WeatherLayout extends React.Component {
       air_pressure,
       Datas,
       Datas2,
+      Datas3
     } = this.state;
+
+    //weather forecast
+    const day = Datas3.map(item => {
+      return moment(item.applicable_date).format("dddd");
+    });
+
+    const icon = Datas3.map(item => {
+      return item.weather_state_abbr;
+    })
+
+    console.log(icon)
+    
+    const min = Datas3.map(item => {
+      return parseInt(item.min_temp);
+    })
+    
+    const max = Datas3.map(item => {
+      return parseInt(item.max_temp);
+    })
 
     //icon
     const icoWeather = `https://www.metaweather.com/static/img/weather/${theIcon}.svg`;
-    
+
     //sun
     const sunRise = moment(Datas2.sun_rise || 0).format("LT");
     const sunSet = moment(Datas2.sun_set || 0).format("LT");
@@ -118,86 +144,82 @@ class WeatherLayout extends React.Component {
     const theHumidity = Datas.humidity || 0;
 
     //visibilty convert miles to km
-    const convertVisibility = (visibility * 1.60934).toFixed(1)
-    
+    const convertVisibility = (visibility * 1.60934).toFixed(1);
+
     //air pressure
     const theAirPressure = air_pressure.toFixed(1);
+
+    //maxmin
+    const maxDis = parseInt(Datas.max_temp) || 0;
+    const minDis = parseInt(Datas.min_temp) || 0;
+
     return (
       <div className="main">
-        
-      <Container>
-        <Row>
-          <Col md={3} className="vert-1">
-            <Card className="weather-search">
-              <SearchCity
-                city={this.state.city}
-                SearchingCity={this.SearchingCity}
-              />
-            </Card>
-            <Card>
-              <span className="cityName">{title}</span>
-              <span>
-                <img alt="" src={icoWeather} />
-              </span>
-              <span className="typeWeather">{typeWeather}</span>
-            </Card>
-            <Card>
-              <div className="weather-temp">
-                {theTemp}
-                <span className="temp-degree">&deg;C</span>
+        <Container>
+          <Row>
+            <Col md={3} className="vert-1">
+              <Card className="weather-search">
+                <SearchCity
+                  city={this.state.city}
+                  SearchingCity={this.SearchingCity}
+                />
+              </Card>
+              <Card>
+                <span className="cityName">{title}</span>
+                <span>
+                  <img alt="" src={icoWeather} />
+                </span>
+                <span className="typeWeather">{typeWeather}</span>
+              </Card>
+              <Card>
+                <div className="weather-temp">
+                  {theTemp}
+                  <span className="temp-degree">&deg;C</span>
+                </div>
+              </Card>
+              <Card>
+                <div className="weather-date">{theDate}</div>
+              </Card>
+            </Col>
+            <Col md={9} className="vert-2">
+              <div className="wrap">
+                <div className="mapForecast">
+                <WeatherForecast day={day[0]} icon={<img src={`https://www.metaweather.com/static/img/weather/${icon[0]}.svg`} alt=""/>} min={min[0]} max={max[0]} />
+                <WeatherForecast day={day[1]} icon={<img src={`https://www.metaweather.com/static/img/weather/${icon[1]}.svg`} alt=""/>} min={min[1]} max={max[1]} />
+                <WeatherForecast day={day[2]} icon={<img src={`https://www.metaweather.com/static/img/weather/${icon[2]}.svg`} alt=""/>} min={min[2]} max={max[2]} />
+                <WeatherForecast day={day[3]} icon={<img src={`https://www.metaweather.com/static/img/weather/${icon[3]}.svg`} alt=""/>} min={min[3]} max={max[3]} />
+                <WeatherForecast day={day[4]} icon={<img src={`https://www.metaweather.com/static/img/weather/${icon[4]}.svg`} alt=""/>} min={min[4]} max={max[4]} />
+                <WeatherForecast day={day[5]} icon={<img src={`https://www.metaweather.com/static/img/weather/${icon[5]}.svg`} alt=""/>} min={min[5]} max={max[5]} />
+                </div>
+                <Card className="bottom">
+                  <span className="header-title">Today's Highlight</span>
+                  <Row>
+                    <Col md={4}>
+                      <MaxMin maxDis={maxDis} minDis={minDis}/>
+                    </Col>
+                    <Col md={4}>
+                      <WindStatus wind_speed={windSpeed} />
+                    </Col>
+                    <Col md={4}>
+                      <SunTime sun_rise={sunRise} sun_set={sunSet} />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={4}>
+                      <Humidity humidity={theHumidity} />
+                    </Col>
+                    <Col md={4}>
+                      <Visibility visibility={convertVisibility} />
+                    </Col>
+                    <Col md={4}>
+                      <AirPressure air_pressure={theAirPressure} />
+                    </Col>
+                  </Row>
+                </Card>
               </div>
-            </Card>
-            <Card>
-              <div className="weather-date">{theDate}</div>
-            </Card>
-          </Col>
-          <Col md={9} className="vert-2">
-            <div className="wrap">
-              <Card className="top">
-                <CardBody>
-                  Friday
-                  <br />
-                  <span className="weather-icon">
-                    <WiDayCloudy />
-                  </span>
-                  <br />
-                  12<span className="temp-degree">&deg;C</span>
-                </CardBody>
-              </Card>
-              <Card className="bottom">
-                <span className="header-title">Today's Highlight</span>
-                <Row>
-                  <Col md={4}>
-                    <Card>
-                      <span className="title">UV Index</span>
-                      <br />
-                      <span className="number">17</span>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <WindStatus wind_speed={windSpeed} />
-                  </Col>
-                  <Col md={4}>
-                    <SunTime sun_rise={sunRise} sun_set={sunSet} />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={4}>
-                    <Humidity humidity={theHumidity}/>
-                  </Col>
-                  <Col md={4}>
-                    <Visibility visibility={convertVisibility}/>
-                  </Col>
-                  <Col md={4}>
-                    <AirPressure air_pressure={theAirPressure}/>
-                  </Col>
-                </Row>
-              </Card>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
